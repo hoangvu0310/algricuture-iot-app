@@ -1,6 +1,11 @@
 import { SplashScreen, Stack } from 'expo-router'
 import { useFonts } from 'expo-font'
 import { useEffect } from 'react'
+import { store } from '../redux/store'
+import { Provider } from 'react-redux'
+import { getSetting, LANGUAGE } from '@/src/config/storage/settingStorage'
+import { changeAppLanguage } from '@/src/i18n/i18n.config'
+import AppThemeProvider from '@/src/context/appThemeContext'
 
 SplashScreen.preventAutoHideAsync()
 
@@ -12,18 +17,28 @@ export default function RootLayout() {
 		'PTSans-BoldItalic': require('../../assets/fonts/PTSans-BoldItalic.ttf'),
 	})
 
-	useEffect(() => {
-		if (error) throw error
+	const loadLanguage = async () => {
+		const language = await getSetting(LANGUAGE)
+		await changeAppLanguage(language || 'en')
+	}
 
-		if (fontsLoaded) SplashScreen.hideAsync()
+	useEffect(() => {
+		loadLanguage().then(() => {
+			if (error) throw error
+			if (fontsLoaded) SplashScreen.hideAsync()
+		})
 	}, [fontsLoaded, error])
 
 	if (!fontsLoaded && !error) return null
 
 	return (
-		<Stack initialRouteName="(onboarding)/index">
-			<Stack.Screen name="(onboarding)/index" options={{ headerShown: false }} />
-			<Stack.Screen name="(auth)" options={{ headerShown: false }} />
-		</Stack>
+		<AppThemeProvider>
+			<Provider store={store}>
+				<Stack initialRouteName="(onboarding)/index">
+					<Stack.Screen name="(onboarding)/index" options={{ headerShown: false }} />
+					<Stack.Screen name="(auth)" options={{ headerShown: false }} />
+				</Stack>
+			</Provider>
+		</AppThemeProvider>
 	)
 }

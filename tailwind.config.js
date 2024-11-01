@@ -1,6 +1,9 @@
 /** @type {import('tailwindcss').Config} */
+const colors = require('./src/constants/colors.ts')
+
 module.exports = {
 	content: ['./src/**/*.{js,jsx,ts,tsx}'],
+	darkMode: 'class',
 	theme: {
 		extend: {
 			fontFamily: {
@@ -10,19 +13,7 @@ module.exports = {
 				'ptsans-boldItalic': ['PTSans-BoldItalic'],
 			},
 			colors: {
-				white: '#FFFFFF',
-				black: '#000000',
-				primary: '#4BA26A',
-				light: {
-					grey1: '#B0ABAB',
-					grey2: '#9A9595',
-					grey3: '#333333',
-					grey4: '#262626',
-					grey5: '#696767',
-				},
-				dark: {
-					grey1: '#B0ABAB',
-				},
+				...colors,
 			},
 		},
 	},

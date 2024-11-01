@@ -1,0 +1,17 @@
+{
+  "auth": {
+    "login": "Log In",
+    "signup": "Sign Up",
+    "loginMessage": "Please log in to continue",
+    "signupMessage": "Create account to continue ",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm password",
+    "fullName": "Full name",
+    "forgotPassword": "Forgot Password",
+    "dontHaveAnAccount": "Don't have an account?",
+    "alreadyHaveAnAccount": "Already have an account?",
+    "loginOption": "Log in",
+    "signupOption": "Sign up"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "auth": {
+    "login": "Đăng Nhập",
+    "signup": "Đăng Kí",
+    "loginMessage": "Vui lòng đăng nhập để tiếp tục",
+    "signupMessage": "Vui lòng tạo tài khoản để tiếp tục",
+    "email": "Email",
+    "password": "Mật khẩu",
+    "confirmPassword": "Xác nhận mật khẩu",
+    "fullName": "Họ và tên",
+    "forgotPassword": "Quên mật khẩu",
+    "dontHaveAnAccount": "Chưa có tài khoản?",
+    "alreadyHaveAnAccount": "Đã có tài khoản?",
+    "loginOption": "Đăng nhập",
+    "signupOption": "Đăng kí"
+  }
+}

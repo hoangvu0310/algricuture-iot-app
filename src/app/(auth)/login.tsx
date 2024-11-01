@@ -14,53 +14,80 @@ import TextFormField from '@/src/components/TextFormField'
 import { useState } from 'react'
 import CustomButton from '@/src/components/CustomButton'
 import { useRouter } from 'expo-router'
+import useTranslationHelper from '@/src/hooks/useTranslationHelper'
+import '../../i18n/i18n.config'
+import { useAppTheme } from '@/src/context/appThemeContext'
+import { ThemeOptions } from '@/src/config/storage/settingStorage'
 
 export default function Login() {
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 	const router = useRouter()
+	const t = useTranslationHelper()
+
+	const isDarkMode = useAppTheme().theme === ThemeOptions.dark
 
 	return (
-		<SafeAreaView className="flex-1 justify-start pt-[30px] bg-white">
+		<SafeAreaView
+			className={`flex-1 justify-start pt-[30px] ${isDarkMode ? 'bg-dark-background' : 'bg-light-background'}`}
+		>
 			<TouchableWithoutFeedback className="flex-1" onPress={Keyboard.dismiss}>
 				<KeyboardAvoidingView>
 					<ScrollView>
-						<View className=" items-center mt-[10px] mb-[30px]">
+						<View className={'items-center mt-[10px] mb-[30px]'}>
 							<Image source={images.auth} />
 						</View>
-						<View className="px-[35px]">
-							<Text className="font-ptsans-bold text-[32px] mb-[20px]">Đăng Nhập</Text>
-							<Text className="font-ptsans text-light-grey1 text-[16px]">
-								Vui lòng đăng nhập để tiếp tục
+						<View className={'px-[35px]'}>
+							<Text
+								className={`font-ptsans-bold text-[32px] mb-[20px] ${isDarkMode ? 'text-primary' : 'text-black'}`}
+							>
+								{t('auth.login')}
+							</Text>
+							<Text
+								className={`font-ptsans text-[16px] ${isDarkMode ? 'text-white' : 'text-light-grey1'}`}
+							>
+								{t('auth.loginMessage')}
 							</Text>
 
 							<TextFormField
-								otherStyle="mt-[30px]"
-								placeholder={'Email'}
+								otherContainerStyle={'mt-[30px]'}
+								otherTextStyle={`${isDarkMode ? 'text-white' : 'text-light-grey3'}`}
+								isDarkMode={isDarkMode}
+								placeholder={t('auth.email')}
 								leadingIcon={icons.email}
 								value={email}
 								setValue={setEmail}
 							/>
 							<TextFormField
-								otherStyle="mt-[40px]"
+								otherContainerStyle={'mt-[40px]'}
+								otherTextStyle={`${isDarkMode ? 'text-white' : 'text-light-grey3'}`}
+								isDarkMode={isDarkMode}
 								isPassword={true}
-								placeholder={'Password'}
+								placeholder={t('auth.password')}
 								leadingIcon={icons.lock}
 								value={password}
 								setValue={setPassword}
 							/>
-							<View className="w-full mt-[20px] items-end">
+							<View className={'w-full mt-[20px] items-end'}>
 								<TouchableOpacity activeOpacity={0.9}>
-									<Text className="font-ptsans-bold text-[14px] text-primary">Quên mật khẩu</Text>
+									<Text className={'font-ptsans-bold text-[14px] text-primary'}>
+										{t('auth.forgotPassword')}
+									</Text>
 								</TouchableOpacity>
 							</View>
 
-							<CustomButton title={'Đăng Nhập'} otherStyle={'mt-[35px]'} />
+							<CustomButton title={t('auth.login')} otherButtonStyle={'mt-[35px]'} />
 
-							<View className="flex-row gap-1 justify-center mt-[20px]">
-								<Text className="font-ptsans text-[16px] text-light-grey5">Chưa có tài khoản?</Text>
+							<View className={'flex-row gap-1 justify-center mt-[20px]'}>
+								<Text
+									className={`font-ptsans text-[16px] text-light-grey5 ${isDarkMode ? 'text-white' : 'text-light-grey5'}`}
+								>
+									{t('auth.dontHaveAnAccount')}
+								</Text>
 								<TouchableOpacity activeOpacity={0.9} onPress={() => router.push('/signup')}>
-									<Text className="font-ptsans-bold text-[16px] text-primary">Đăng kí</Text>
+									<Text className="font-ptsans-bold text-[16px] text-primary">
+										{t('auth.signupOption')}
+									</Text>
 								</TouchableOpacity>
 							</View>
 						</View>

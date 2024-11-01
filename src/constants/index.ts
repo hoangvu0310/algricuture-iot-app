@@ -1,4 +1,6 @@
 import icons from './icons'
 import images from './images'
 
-export { icons, images }
+const colors = require('./colors.ts')
+
+export { icons, images, colors }

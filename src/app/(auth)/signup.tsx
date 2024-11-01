@@ -15,6 +15,10 @@ import { useState } from 'react'
 import CustomButton from '@/src/components/CustomButton'
 import { useRouter } from 'expo-router'
 import BackButton from '@/src/components/BackButton'
+import useTranslationHelper from '@/src/hooks/useTranslationHelper'
+import '../../i18n/i18n.config'
+import { useAppTheme } from '@/src/context/appThemeContext'
+import { ThemeOptions } from '@/src/config/storage/settingStorage'
 
 export default function Signup() {
 	const [fullName, setFullName] = useState('')
@@ -22,63 +26,92 @@ export default function Signup() {
 	const [password, setPassword] = useState('')
 	const [confirmPassword, setConfirmPassword] = useState('')
 	const router = useRouter()
+	const t = useTranslationHelper()
+
+	const isDarkMode = useAppTheme().theme === ThemeOptions.dark
 
 	return (
-		<SafeAreaView className="flex-1 justify-start pt-[30px] bg-white">
-			<TouchableWithoutFeedback className="flex-1" onPress={Keyboard.dismiss}>
+		<SafeAreaView
+			className={`flex-1 justify-start pt-[30px] ${isDarkMode ? 'bg-dark-background' : 'bg-light-background'}`}
+		>
+			<TouchableWithoutFeedback className={'flex-1'} onPress={Keyboard.dismiss}>
 				<KeyboardAvoidingView>
 					<ScrollView>
-						<BackButton otherStyles={'pl-[35px]'} onPress={() => router.back()} />
-						<View className=" items-center mt-[10px] mb-[30px]">
+						<BackButton
+							otherStyles={`pl-[35px]`}
+							isDarkMode={isDarkMode}
+							onPress={() => router.back()}
+						/>
+						<View className={' items-center mt-[10px] mb-[30px]'}>
 							<Image source={images.auth} />
 						</View>
-						<View className="px-[35px]">
-							<Text className="font-ptsans-bold text-[32px] mb-[20px]">Đăng Kí</Text>
-							<Text className="font-ptsans text-light-grey1 text-[16px]">
-								Vui lòng tạo tài khoản để tiếp tục
+						<View className={'px-[35px]'}>
+							<Text
+								className={`font-ptsans-bold text-[32px] mb-[20px] ${isDarkMode ? 'text-primary' : 'text-black'}`}
+							>
+								{t('auth.signup')}
+							</Text>
+							<Text
+								className={`font-ptsans text-[16px] ${isDarkMode ? 'text-white' : 'text-light-grey1'}`}
+							>
+								{t('auth.signupMessage')}
 							</Text>
 
 							<TextFormField
-								otherStyle="mt-[30px]"
-								placeholder={'Họ và tên'}
+								otherContainerStyle={'mt-[30px]'}
+								otherTextStyle={`${isDarkMode ? 'text-white' : 'text-light-grey3'}`}
+								isDarkMode={isDarkMode}
+								placeholder={t('auth.fullName')}
 								leadingIcon={icons.avatar}
 								value={fullName}
 								setValue={setFullName}
 							/>
 							<TextFormField
-								otherStyle="mt-[40px]"
-								placeholder={'Email'}
+								otherContainerStyle={'mt-[40px]'}
+								otherTextStyle={`${isDarkMode ? 'text-white' : 'text-light-grey3'}`}
+								isDarkMode={isDarkMode}
+								placeholder={t('auth.email')}
 								leadingIcon={icons.email}
 								value={email}
 								setValue={setEmail}
 							/>
 							<TextFormField
-								otherStyle="mt-[40px]"
+								otherContainerStyle={'mt-[40px]'}
+								otherTextStyle={`${isDarkMode ? 'text-white' : 'text-light-grey3'}`}
+								isDarkMode={isDarkMode}
 								isPassword={true}
-								placeholder={'Mật khẩu'}
+								placeholder={t('auth.password')}
 								leadingIcon={icons.lock}
 								value={password}
 								setValue={setPassword}
 							/>
 							<TextFormField
-								otherStyle="mt-[40px]"
+								otherContainerStyle={'mt-[40px]'}
+								otherTextStyle={`${isDarkMode ? 'text-white' : 'text-light-grey3'}`}
+								isDarkMode={isDarkMode}
 								isPassword={true}
-								placeholder={'Xác nhận mật khẩu'}
+								placeholder={t('auth.confirmPassword')}
 								leadingIcon={icons.lock}
 								value={confirmPassword}
 								setValue={setConfirmPassword}
 							/>
 
 							<CustomButton
-								title={'Đăng Kí'}
-								otherStyle={'mt-[35px]'}
+								title={t('auth.signup')}
+								otherButtonStyle={'mt-[35px]'}
 								onPress={() => router.replace('/login')}
 							/>
 
-							<View className="flex-row gap-1 justify-center mt-[20px]">
-								<Text className="font-ptsans text-[16px] text-light-grey5">Đã có tài khoản?</Text>
+							<View className={'flex-row gap-1 justify-center mt-[20px]'}>
+								<Text
+									className={`font-ptsans text-[16px] ${isDarkMode ? 'text-white' : 'text-light-grey5'}`}
+								>
+									{t('auth.alreadyHaveAnAccount')}
+								</Text>
 								<TouchableOpacity activeOpacity={0.9} onPress={() => router.back()}>
-									<Text className="font-ptsans-bold text-[16px] text-primary">Đăng nhập</Text>
+									<Text className={'font-ptsans-bold text-[16px] text-primary'}>
+										{t('auth.loginOption')}
+									</Text>
 								</TouchableOpacity>
 							</View>
 						</View>
