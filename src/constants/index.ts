@@ -1,6 +1,7 @@
-import icons from './icons'
-import images from './images'
+import ICONS from './icons'
+import IMAGES from './images'
+import APIS from '@/src/constants/apis'
 
-const colors = require('./colors.ts')
+const COLORS = require('./colors.ts')
 
-export { icons, images, colors }
+export { ICONS, IMAGES, COLORS, APIS }
