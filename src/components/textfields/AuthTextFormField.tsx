@@ -1,6 +1,6 @@
 import { Image, ImageSourcePropType, TextInput, TouchableWithoutFeedback, View } from 'react-native'
 import { useState } from 'react'
-import { icons, colors } from '@/src/constants'
+import { ICONS, COLORS } from '@/src/constants'
 
 type TextFormFieldProps = {
 	otherContainerStyle?: string
@@ -15,7 +15,7 @@ type TextFormFieldProps = {
 	setValue: (value: string) => void
 }
 
-export default function TextFormField({
+export default function AuthTextFormField({
 	otherContainerStyle,
 	otherTextStyle,
 	otherIconStyle,
@@ -43,17 +43,19 @@ export default function TextFormField({
 			`}
 		>
 			{leadingIcon && (
-				<Image
-					className={`${otherIconStyle}`}
-					source={leadingIcon}
-					tintColor={isDarkMode ? colors.primary : colors.light.grey3}
-				/>
+				<View className={'min-w-[45px]'}>
+					<Image
+						className={`${otherIconStyle}`}
+						source={leadingIcon}
+						tintColor={isDarkMode ? COLORS.primary : COLORS.light.grey3}
+					/>
+				</View>
 			)}
 			<TextInput
-				className={`flex-1 mx-5 ${otherTextStyle}`}
+				className={`flex-1 ${otherTextStyle}`}
 				placeholder={placeholder}
-				placeholderTextColor={isDarkMode ? colors.dark.grey2 : colors.light.grey2}
-				cursorColor={colors.primary}
+				placeholderTextColor={isDarkMode ? COLORS.dark.grey2 : COLORS.light.grey2}
+				cursorColor={COLORS.primary}
 				value={value}
 				secureTextEntry={isPassword ? !secureText : secureText}
 				onChangeText={setValue}
@@ -65,15 +67,15 @@ export default function TextFormField({
 					<Image
 						className={`${otherIconStyle}`}
 						source={trailingIcon}
-						tintColor={isDarkMode ? colors.primary : colors.light.grey3}
+						tintColor={isDarkMode ? COLORS.primary : COLORS.light.grey3}
 					/>
 				)
 			) : (
 				<TouchableWithoutFeedback onPress={() => setSecureText(!secureText)}>
 					<Image
 						className={`w-[26px] h-[20px] ${otherIconStyle}`}
-						source={secureText ? icons.eye : icons.eyeHide}
-						tintColor={isDarkMode ? colors.primary : colors.light.grey3}
+						source={secureText ? ICONS.Eye : ICONS.EyeHide}
+						tintColor={isDarkMode ? COLORS.primary : COLORS.light.grey3}
 					/>
 				</TouchableWithoutFeedback>
 			)}

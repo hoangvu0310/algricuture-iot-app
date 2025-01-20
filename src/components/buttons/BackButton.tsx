@@ -1,5 +1,5 @@
 import { Image, TouchableOpacity, View } from 'react-native'
-import { icons, colors } from '@/src/constants'
+import { ICONS, COLORS } from '@/src/constants'
 
 type BackButtonProps = {
 	onPress: () => void
@@ -13,8 +13,8 @@ export default function BackButton({ onPress, otherStyles, isDarkMode }: BackBut
 			<TouchableOpacity activeOpacity={0.9} onPress={onPress}>
 				<Image
 					className={'h-[20px] w-[12px]'}
-					source={icons.back}
-					tintColor={isDarkMode ? colors.white : colors.black}
+					source={ICONS.Back}
+					tintColor={isDarkMode ? COLORS.white : COLORS.black}
 				/>
 			</TouchableOpacity>
 		</View>

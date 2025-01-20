@@ -1,17 +1,33 @@
 {
   "auth": {
-    "login": "Đăng Nhập",
-    "signup": "Đăng Kí",
-    "loginMessage": "Vui lòng đăng nhập để tiếp tục",
-    "signupMessage": "Vui lòng tạo tài khoản để tiếp tục",
-    "email": "Email",
+    "signIn": "Đăng Nhập",
+    "signUp": "Đăng Kí",
+    "signInMessage": "Vui lòng đăng nhập để tiếp tục",
+    "signUpMessage": "Vui lòng tạo tài khoản để tiếp tục",
+    "username": "Tài khoản",
     "password": "Mật khẩu",
     "confirmPassword": "Xác nhận mật khẩu",
     "fullName": "Họ và tên",
     "forgotPassword": "Quên mật khẩu",
     "dontHaveAnAccount": "Chưa có tài khoản?",
     "alreadyHaveAnAccount": "Đã có tài khoản?",
-    "loginOption": "Đăng nhập",
-    "signupOption": "Đăng kí"
+    "signInOption": "Đăng nhập",
+    "signUpOption": "Đăng kí",
+    "requiredUsername": "Vui lòng nhập tài khoản",
+    "requiredPassword": "Vui lòng nhập mật khẩu",
+    "requiredConfirmPassword": "Vui lòng nhập lại mật khẩu",
+    "usernameMin": "Tài khoản phải chứa ít nhất 4 kí tự",
+    "usernameMax": "Tài khoản không được vượt quá 48 kí tự",
+    "passwordMin": "Mật khẩu phải chứa ít nhất 6 kí tự ",
+    "passwordMax": "Mật khẩu không được vượt quá 32 kí tự",
+    "confirmPasswordWrong": "Mật khẩu xác nhận không khớp"
+  },
+  "error": {
+    "commonError": "Có lỗi xảy ra, vui lòng thử lại sau",
+    "networkError": "Vui lòng kiểm tra lại kết nối internet",
+    "notFoundError": "Tài khoản không tồn tại",
+    "wrongPasswordError": "Mật khẩu không chính xác",
+    "duplicateError": "Tài khoản đã tôn tại",
+    "serverError": "Đã có lỗi xảy ra với server, vui lòng thử lại sau"
   }
 }

@@ -3,9 +3,10 @@ import { useFonts } from 'expo-font'
 import { useEffect } from 'react'
 import { store } from '../redux/store'
 import { Provider } from 'react-redux'
-import { getSetting, LANGUAGE } from '@/src/config/storage/settingStorage'
+import { getLanguage, LanguageOptions } from '@/src/config/storage/SettingStorage'
 import { changeAppLanguage } from '@/src/i18n/i18n.config'
-import AppThemeProvider from '@/src/context/appThemeContext'
+import AppThemeProvider from '@/src/context/AppThemeContext'
+import Toast from 'react-native-toast-message'
 
 SplashScreen.preventAutoHideAsync()
 
@@ -18,8 +19,8 @@ export default function RootLayout() {
 	})
 
 	const loadLanguage = async () => {
-		const language = await getSetting(LANGUAGE)
-		await changeAppLanguage(language || 'en')
+		const language = await getLanguage()
+		await changeAppLanguage(language || LanguageOptions.en)
 	}
 
 	useEffect(() => {
@@ -37,7 +38,9 @@ export default function RootLayout() {
 				<Stack initialRouteName="(onboarding)/index">
 					<Stack.Screen name="(onboarding)/index" options={{ headerShown: false }} />
 					<Stack.Screen name="(auth)" options={{ headerShown: false }} />
+					<Stack.Screen name="(main)" options={{ headerShown: false }} />
 				</Stack>
+				<Toast position={'bottom'} bottomOffset={30} />
 			</Provider>
 		</AppThemeProvider>
 	)

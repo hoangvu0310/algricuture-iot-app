@@ -1,4 +1,4 @@
 export default {
-	Signin: '/auth/signin',
-	Signup: '/auth/signup',
+	SignIn: '/auth/signin',
+	SignUp: '/auth/signup',
 }

@@ -1,17 +1,33 @@
 {
   "auth": {
-    "login": "Log In",
-    "signup": "Sign Up",
-    "loginMessage": "Please log in to continue",
-    "signupMessage": "Create account to continue ",
-    "email": "Email",
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "signInMessage": "Please sign in to continue",
+    "signUpMessage": "Create account to continue ",
+    "username": "Username",
     "password": "Password",
     "confirmPassword": "Confirm password",
     "fullName": "Full name",
     "forgotPassword": "Forgot Password",
     "dontHaveAnAccount": "Don't have an account?",
     "alreadyHaveAnAccount": "Already have an account?",
-    "loginOption": "Log in",
-    "signupOption": "Sign up"
+    "signInOption": "Sign in",
+    "signUpOption": "Sign up",
+    "requiredUsername": "Username is required",
+    "requiredPassword": "Password is required",
+    "requiredConfirmPassword": "Please confirm your password",
+    "usernameMin": "Username must contain at least 4 characters",
+    "usernameMax": "Username must not exceed 48 characters",
+    "passwordMin": "Password must contain at least 6 character",
+    "passwordMax": "Password must not exceed 32 characters",
+    "confirmPasswordWrong": "Confirm password must be the same as password"
+  },
+  "error": {
+    "commonError": "Something went wrong, please try again later",
+    "networkError": "Please check your internet connection",
+    "notFoundError": "Username does not exist",
+    "wrongPasswordError": "Password is incorrect",
+    "duplicateError": "Username has already existed",
+    "serverError": "An unexpected error happened to the server, please try again later"
   }
 }
